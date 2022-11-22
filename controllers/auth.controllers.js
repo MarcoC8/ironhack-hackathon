@@ -88,8 +88,12 @@ const loginPostController = (req, res, next) => {
 const profileGetController = (req, res, next) => {
     axios.get('https://anime-facts-rest-api.herokuapp.com/api/v1')
     .then(animeList => {
-        console.log(animeList.data[0]);
-        res.render('facts.hbs');
+        const animeInfo = animeList.data.data;
+        const random = animeInfo[Math.floor(Math.random() * animeInfo.length)];
+
+console.log(random); // 👉️ three
+        // console.log(animeList.data.data[i]);
+        res.render('facts.hbs', random);
     })
     .catch(err => console.log(err));
 }
