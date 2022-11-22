@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
+const axios = require('axios');
 
 const authRouter = require('./routes/auth.routes');
 

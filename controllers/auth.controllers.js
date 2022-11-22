@@ -1,5 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.model');
+const axios = require('axios');
 
 
 const signupGetController = (req, res, next) => {
@@ -85,7 +86,12 @@ const loginPostController = (req, res, next) => {
 }
 
 const profileGetController = (req, res, next) => {
-  res.render('facts.hbs', req.session.user);
+    axios.get('https://anime-facts-rest-api.herokuapp.com/api/v1')
+    .then(animeList => {
+        console.log(animeList.data[0]);
+        res.render('facts.hbs');
+    })
+    .catch(err => console.log(err));
 }
 
 module.exports = {
