@@ -74,7 +74,7 @@ const loginPostController = (req, res, next) => {
 
       req.session.user = foundUser;
 
-     req.redirect('/facts')
+     res.redirect('/facts')
 
     })
     .catch(err => {
